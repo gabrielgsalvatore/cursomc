@@ -39,7 +39,7 @@ public class Produto implements Serializable {
         this.itens = itens;
     }
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "PRODUTO_CATEGORIA",
