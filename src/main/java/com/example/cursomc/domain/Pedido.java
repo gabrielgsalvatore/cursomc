@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Pedido implements Serializable {
@@ -42,6 +43,10 @@ public class Pedido implements Serializable {
         this.instante = instante;
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
+    }
+
+    public Double getValorTotal(){
+        return itens.stream().map(x -> x.getSubTotal()).collect(Collectors.summingDouble(Double::doubleValue));
     }
 
     public Set<ItemPedido> getItens() {
